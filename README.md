@@ -1,5 +1,4 @@
 # Realmbox
-Exalt Account Manager is a simple program written in C# utilizing the Windows Presentation Foundation GUI Framework to open the RotMG Exalt.exe without having to use the launcher and also being able to open multiple instances of the game with ease.
 
 ## Installation and Setup
 - Unzip the Realmbox.zip from one of the releases.
@@ -9,11 +8,9 @@ Exalt Account Manager is a simple program written in C# utilizing the Windows Pr
 
 Settings are saved at `%APPDATA%\Realmbox\settings.json`
 
-## Limitations
-Only works for Windows, but works for steam accounts now.
-
 ## Steam Accounts
-Instead of entering the e-mail, `steamworks:<steamid>` and the password that you can get by using [Fiddler](https://www.telerik.com/fiddler) to look at the `https://www.realmofthemadgod.com/account/verify` HTTP request that is made via the Steam Launcher to get an access token. Look at the body and copy the password.
+For logging in with steam accounts, replace the email field with your GUID and the password field with your Secret.
+You can do this using [Fiddler](https://www.telerik.com/fiddler), and jakcodex has a good guide found [here](https://github.com/jakcodex/muledump/wiki/Steam-Users-Setup-Guide).
 
 ## Support and Contributions
 You can request a new feature by submitting an issue to the GitHub Repository. If you would like to implement a new feature, go ahead and fork the repository, create a new branch and then create a PR.
@@ -31,5 +28,5 @@ Fiddler -> Options -> HTTPS Tab -> Make sure that Decrypt HTTPS traffic is selec
 
 Alternatively you can use a [tool](https://github.com/MaikEight/EAM-GetClientHWID) that was made by [MaikEight](https://github.com/MaikEight) for this kind of purpose.
 
-## Plans
-Once .NET MAUI is released this will probably see a redesign with some fancy UI.
+## Credit
+This is just a fork of [link3337's account manager](https://github.com/link3337/ExaltAccountManager) rebuilt for multiboxing.
