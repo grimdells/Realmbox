@@ -3,8 +3,8 @@
 ## Installation and Setup
 - Unzip the Realmbox.zip from one of the releases.
 - Run Realmbox.exe
-- Enter the Exalt Path by clicking on the textbox and clicking save.
-- Enter account info
+- Enter the Exalt Path under Settings > Exalt Path.
+- Enter account and proxy info if applicable.
 
 Settings are saved at `%APPDATA%\Realmbox\settings.json`
 
