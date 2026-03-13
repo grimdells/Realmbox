@@ -1,6 +1,6 @@
 # Realmbox
 
-## Installation and Setup 
+## Installation and Setup
 - Unzip the Realmbox.zip from one of the releases.
 - Run Realmbox.exe
 - Enter the Exalt Path under Settings > Exalt Path.
