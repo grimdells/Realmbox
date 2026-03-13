@@ -1,0 +1,135 @@
+<Window x:Class="Realmbox.UI.EditAccountDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Account"
+        Height="455"
+        Width="420"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/TextStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Account fields -->
+        <TextBlock Text="Name:"
+                Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtName"
+                Grid.Column="1"
+                Margin="5"/>
+
+        <TextBlock Text="Email:"
+                Grid.Row="1"
+                Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtEmail"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="5"/>
+
+        <TextBlock Text="Password:"
+                Grid.Row="2"
+                Margin="5" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="txtPassword"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="5"/>
+
+        <TextBlock Text="Group:"
+                Grid.Row="3"
+                Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtGroup"
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="5"
+                ToolTip="Optional group name for batch launching (e.g. 'Farm', 'Main')"/>
+
+        <!-- Proxy section separator -->
+        <Separator Grid.Row="4" Grid.ColumnSpan="2" Margin="5,8,5,4"/>
+
+        <TextBlock Text="SOCKS5 Proxy"
+                   Grid.Row="5" Grid.ColumnSpan="2"
+                   FontWeight="SemiBold"
+                   Margin="5,0,5,4"/>
+
+        <!-- Proxy Host + Port on one row -->
+        <TextBlock Text="Host : Port:"
+                Grid.Row="6"
+                Margin="5" VerticalAlignment="Center"/>
+        <Grid Grid.Row="6" Grid.Column="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtProxyHost"
+                     Grid.Column="0"
+                     ToolTip="SOCKS5 proxy hostname or IP (leave blank for no proxy)"/>
+            <TextBlock Text=":"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="4,0"/>
+            <TextBox x:Name="txtProxyPort"
+                     Grid.Column="2"
+                     ToolTip="SOCKS5 proxy port (e.g. 1080)"/>
+        </Grid>
+
+        <!-- Proxy Username -->
+        <TextBlock Text="Proxy User:"
+                Grid.Row="7"
+                Margin="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtProxyUsername"
+                Grid.Row="7"
+                Grid.Column="1"
+                Margin="5"
+                ToolTip="Optional - leave blank if proxy requires no authentication"/>
+
+        <!-- Proxy Password -->
+        <TextBlock Text="Proxy Pass:"
+                Grid.Row="8"
+                Margin="5" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="txtProxyPassword"
+                Grid.Row="8"
+                Grid.Column="1"
+                Margin="5"
+                ToolTip="Optional - leave blank if proxy requires no authentication"/>
+
+        <StackPanel Grid.Row="10"
+                Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="Save"
+                    Click="BtnSave_Click"
+                    Style="{StaticResource ActionButton}"
+                    Width="80"
+                    Margin="5"/>
+            <Button Content="Cancel"
+                    Click="BtnCancel_Click"
+                    Style="{StaticResource DangerButton}"
+                    Width="80"
+                    Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

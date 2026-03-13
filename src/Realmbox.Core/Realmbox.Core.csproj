@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Management" Version="9.0.3" />
+		<PackageReference Include="SharpPcap"    Version="6.3.0" />
+		<PackageReference Include="PacketDotNet" Version="1.4.7" />
+	</ItemGroup>
+	<ItemGroup>
+		<!-- Copy ProxyHook.dll to the output directory so DllInjector can find it -->
+		<Content Include="Native\ProxyHook.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+</Project>

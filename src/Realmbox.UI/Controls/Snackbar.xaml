@@ -1,0 +1,17 @@
+<UserControl x:Class="Realmbox.UI.Controls.Snackbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root"
+             Opacity="1"
+             Visibility="Collapsed">
+    <Border Background="#323232"
+            CornerRadius="4"
+            Padding="16,14"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0,0,0,20">
+        <TextBlock Text="{Binding Message, ElementName=Root}"
+                   Foreground="White"
+                   FontSize="14"/>
+    </Border>
+</UserControl>

@@ -1,0 +1,73 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - release
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x-preview.1'
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      
+    - name: Publish
+      run: |
+        dotnet publish src/Realmbox.UI/Realmbox.UI.csproj `
+          --configuration Release `
+          --runtime win-x64 `
+          --self-contained true `
+          --output ./publish `
+          -p:PublishSingleFile=true `
+          -p:IncludeNativeLibrariesForSelfExtract=true `
+          -p:EnableCompressionInSingleFile=true
+          
+    - name: Create ZIP Archive
+      run: Compress-Archive -Path "./publish/*" -DestinationPath "./Realmbox.zip"
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: true
+        prerelease: false
+        body: |
+          Release notes for version ${{ github.ref }}
+          
+          Changes:
+          - 
+          
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./Realmbox.zip
+        asset_name: Realmbox.zip
+        asset_content_type: application/zip
